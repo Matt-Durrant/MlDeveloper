@@ -1,0 +1,7 @@
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:App/etc/routes.xsd">
+    <router id="admin">
+        <route id="testapi" frontName="testapi">
+            <module name="ML_DeveloperTest" before="Magento_Adminhtml" />
+        </route>
+    </router>
+</config>

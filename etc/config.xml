@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <geoip>
+            <general>
+                <enable>0</enable>
+                <error_message>I'm sorry, this product cannot be ordered from</error_message>
+            </general>
+        </geoip>
+        <csp> <!-- Content Security Policiy -->
+            <mode>
+                <storefront>
+                    <report_only>1</report_only>
+                </storefront>
+                <admin>
+                    <report_only>1</report_only>
+                </admin>
+            </mode>
+        </csp>
+    </default>
+</config>        

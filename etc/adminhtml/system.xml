@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="ml_dev" translate="label" sortOrder="10">
+            <label>ML Dev</label>
+        </tab>
+        <section id="geoip" translate="label" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+            <class>separator-top</class>
+            <label>Geo IP</label>
+            <tab>ml_dev</tab>
+            <resource>ML_DeveloperTest::acl_rule</resource>
+            <group id="general" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                <label>Geo IP Settings</label>
+                <field id="enable" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Enable module</label>
+                    <source_model>Magento\Config\Model\Config\Source\Enabledisable</source_model>
+                </field>
+                <field id="api_url" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>API Url</label>
+                    <comment>Example: http://api.ipapi.com/</comment>
+                    <validate>no-whitespace	required-entry validate-url</validate>
+                </field>
+                <field id="api_key" translate="label" type="password" sortOrder="30" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>API Key</label>
+                    <validate>no-whitespace	required-entry validate-no-html-tags</validate>
+                </field>
+                <field id="test_api_button" translate="label" type="button" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Test API</label>
+                    <comment>This will make a request to the geo IP service using the details you have entered and your IP address.</comment>
+                    <frontend_model>ML\DeveloperTest\Block\Adminhtml\System\Config\TestApiButton</frontend_model>
+                </field>
+                <field id="error_message" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Customer Error Message</label>
+                    <validate>letters-with-basic-punc validate-no-html-tags</validate>
+                    <comment>This is the message that will be displayed to the customer if their country is blocked from purchasing a specific product. The customer country name is added to the end of the message automatically</comment>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

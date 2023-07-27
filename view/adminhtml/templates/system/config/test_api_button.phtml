@@ -1,0 +1,41 @@
+<?= $block->getChildHtml('button') ?>
+<div id="test_api_result" class="messages"></div>
+
+<script>
+    require([
+        'jquery'
+    ], function ($) {
+
+        $('#test_api_button').click(function () {
+            testApi();
+        });
+
+        function testApi() {
+            var url = "<?= $block->getAjaxCheckUrl() ?>";
+            var apiKey = $('#geoip_general_api_key').val();
+            var apiUrl = $('#geoip_general_api_url').val();
+
+            // Show a loading message
+            $('#test_api_result').html('<div class="message message-loading"><div>Loading...</div></div>');
+
+            // Make the AJAX call to the API test controller
+            $.ajax({
+                url: url,
+                type: 'GET',
+                dataType: 'json',
+                data: {
+                    api_key: apiKey,
+                    api_url: apiUrl
+                },
+                success: function (response) {
+                    var message = response.success ? '<div class="message message-success"><div>' + response.message + '</div></div>' : '<div class="message message-error"><div>' + response.message + '</div></div>';
+                    $('#test_api_result').html(message);
+                },
+                error: function (response) {
+                    $('#test_api_result').html('<div class="message message-error"><div>An error occurred while testing the API.</div></div>');
+                }
+            });
+        }
+        
+    });
+</script>
